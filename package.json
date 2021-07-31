@@ -1,0 +1,33 @@
+{
+	"name": "webpackTest",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "webpack --mode production",
+		"dev": "webpack --mode development",
+		"watch": "webpack --mode development --watch",
+		"sass-ver": "sass --version"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sawasick/webpackTest.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/sawasick/webpackTest/issues"
+	},
+	"homepage": "https://github.com/sawasick/webpackTest#readme",
+	"devDependencies": {
+		"css-loader": "^6.2.0",
+		"fibers": "^5.0.0",
+		"mini-css-extract-plugin": "^2.1.0",
+		"sass": "^1.37.0",
+		"sass-loader": "^12.1.0",
+		"webpack": "^5.47.1",
+		"webpack-cli": "^4.7.2"
+	}
+}

@@ -1,0 +1,14 @@
+$color-red: #ff0000;
+.txt {
+	&__red {
+		color: $color-red;
+	}
+
+	&__bold {
+		font-weight: bold;
+	}
+
+	&__bg-green {
+		background-color: #00ff00;
+	}
+}
