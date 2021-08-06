@@ -13,6 +13,8 @@
 
 ### **1.構築するディレクトリに移動**
 
+---
+
 ### **2.package.json の生成**
 
 ```zsh
@@ -45,6 +47,8 @@ Wrote to /Users/sawasickimac/Desktop/GitHub/webpackTest/package.json:
   "homepage": "https://github.com/sawasick/webpackTest#readme"
 }
 ```
+
+---
 
 ### **3.wekpack のインストール**
 
@@ -90,6 +94,8 @@ found 0 vulnerabilities
 └── package.json  //npm の設定ファイル
 ```
 
+---
+
 ### **4.初期構成の作成**
 
 初期構成として下記のようにフォルダ、ファイルを作成する
@@ -122,6 +128,8 @@ index.html のスタイル,スクリプトの読み込みは以下のパス
 
 <script type="text/javascript" src="dist/main.js" defer></script>
 ```
+
+---
 
 ### **5.ローダーとプラグインのインストール**
 
@@ -178,6 +186,8 @@ package.json が以下のようになっている
 ```zsh
 $ npm install --save-dev fibers
 ```
+
+---
 
 ### **6.webpack.config.js を作成**
 
@@ -269,6 +279,8 @@ module.exports = {
 - css-loader で CSS を JavaScript（CommonJS） に変換
 - MiniCssExtractPlugin.loader で CSS を 抽出して別ファイルとして出力
 
+---
+
 ### **7.npm script の準備**
 
 package.json の script フィールドのコマンドを追加
@@ -284,7 +296,58 @@ package.json の script フィールドのコマンドを追加
 ~~
 ```
 
-### **8.コンパイル**
+---
+
+### **8.Autoprefixer 導入**
+
+ベンダープレフィックスを自動付与してくれる
+
+```zsh
+$ npm install --save-dev postcss-loader autoprefixer
+```
+
+成功すると package.json に下記内容が追記されてる
+
+```json
+"devDependencies": {
+	"autoprefixer": "^10.3.1",
+    ...
+	}
+```
+
+webpack.config.js に設定を追記する
+→css-loader と sass-loader の間に postcss-loader を追加
+
+```javascript
+// CSSをバンドルするためのローダー
+{
+  loader: 'css-loader',
+  ...
+},
+// 以下を追記
+// PostCSS（autoprefixer）の設定
+{
+  loader: 'postcss-loader',
+  options: {
+    // PostCSS でもソースマップを有効に
+    // sourceMap: enabledSourceMap,
+    sourceMap: false,
+    postcssOptions: {
+      // ベンダープレフィックスを自動付与
+      plugins: ['autoprefixer'],
+    },
+  },
+},
+// Sass を CSS へ変換するローダー
+{
+  loader: 'sass-loader',
+  ...
+},
+```
+
+---
+
+### **9.コンパイル**
 
 コンパイルを実行
 
